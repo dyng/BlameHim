@@ -8,7 +8,22 @@ Still feel shame while writting pieces of shit, and is afraid of being disclosed
 
 ## How it works
 
+There is two mode in blamehim: *hard-mode* and *soft-mode*.
+
+### soft mode
 It is simple. *blamehim* apends a space to lines you specified, temporarily changes `user.name` and `use.email` to your victim's, makes commit, restores your own username and email address, done.
+##### how to undo
+It just append an extra fake commit and won't hurt existing history, so it is safe. You can simply undo it by `git reset --hard HEAD~`.
+
+### hard mode
+Unlike soft-mode, hard-mode use `git filter-branch` to rewrite almost entire history if necessary. *blamehim* run in soft-mode by default, use `-f` to enable hard-mode, like
+
+    blamehim -f -a badguy 1-$ file
+
+Remember that hard-mode may cost a pretty long time to complete.
+
+##### how to undo
+You can find your original branch header under `.git/refs/original`, or refer to `git reflog`. If you found it, `git reset` will do the job.
 
 ## Example
 
