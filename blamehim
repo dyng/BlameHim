@@ -45,7 +45,7 @@ fake_addr=${email:-$real_addr}
 # hard_mode use git filter-branch to rewrite history
 hard_mode (){
     tmp_file="${TMPDIR%/}/blamehe-$$.$RANDOM"
-    git blame -l $file|sed -n "$r p"|cut -d " " -f 1|sed 's/^\^//' >> $tmp_file
+    git blame --abbrev=40 $file|sed -n "$r p"|cut -d " " -f 1|sed 's/^\^//' >> $tmp_file
 
     git filter-branch -f --env-filter "
         if grep \$GIT_COMMIT $tmp_file; then
