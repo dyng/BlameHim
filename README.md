@@ -8,7 +8,7 @@ Still feel shame while writting pieces of shit, and is afraid of being disclosed
 
 ## How it works
 
-There is two mode in blamehim: *hard-mode* and *soft-mode*.
+There are two modes in blamehim: *hard-mode* and *soft-mode*.
 
 ### soft mode
 It is simple. *blamehim* apends a space to lines you specified, temporarily changes `user.name` and `use.email` to your victim's, makes commit, restores your own username and email address, done.
